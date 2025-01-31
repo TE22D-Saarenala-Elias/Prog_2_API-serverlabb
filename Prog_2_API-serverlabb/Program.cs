@@ -1,3 +1,6 @@
+
+//  Mickes --> 10.151.172.158:5025
+
 var builder = WebApplication.CreateBuilder(args);
 WebApplication app = builder.Build();
 
@@ -16,8 +19,16 @@ app.Urls.Add("http://*:5241/");
 app.MapGet("/", GetHello);
 app.MapGet("/Teacher", GetTeachers);
 app.MapGet("/Teacher/{n}",GetTeacher);
+app.MapPost("/PutTeacher", PutTeacher);
 
 app.Run();
+
+static string PutTeacher(Teacher t)
+{
+    Console.WriteLine("Got new teacher " + t.Name);
+
+    return "Yes";
+}
 
 
 
